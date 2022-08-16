@@ -3,6 +3,7 @@ package macia.leetcode;
 /**
  * @author ebiz_zenggs
  * @Date 2022/8/10
+ * https://leetcode.cn/problems/two-sum/
  */
 public class L1 {
 
