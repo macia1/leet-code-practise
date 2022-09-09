@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Limit {
 
     public static void main(String[] args) {
-        double[] doubleArr = new double[100000];
+        double[] doubleArr = new double[20000000];
         for (int i = 0; i < doubleArr.length; i++) {
             doubleArr[i] = ThreadLocalRandom.current().nextDouble(-999999999999L,999999999999L);
         }
@@ -28,12 +28,8 @@ public class Limit {
             return data;
         }
         if (data.length == 2){
-            double left = data[0];
-            double right = data[1];
-            if (left > right){
-                data[0] = right;
-                data[1] = left;
-            }
+            data[0] = Math.min(data[0],data[1]);
+            data[1] = Math.max(data[0],data[1]);
             return data;
         }
         int mid = data.length / 2;
