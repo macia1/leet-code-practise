@@ -41,7 +41,7 @@ public class Limit {
         if (leftArr.length == 2 && rightArr.length == 2){
             double leftMinVal = leftArr[0];
             double rightMinVal = rightArr[0];
-            double leftMaxVal = rightArr[1];
+            double leftMaxVal = leftArr[1];
             double rightMaxVal = rightArr[1];
             result[0] = Math.min(leftMinVal, rightMinVal);
             result[1] = Math.max(leftMaxVal, rightMaxVal);
