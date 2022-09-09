@@ -32,6 +32,7 @@ public class Limit {
             data[1] = Math.max(data[0],data[1]);
             return data;
         }
+
         int mid = data.length / 2;
         double[] leftBuff = new double[mid];
         double[] rightBuff = new double[data.length - mid];
@@ -39,26 +40,22 @@ public class Limit {
         System.arraycopy(data, mid, rightBuff, 0, data.length - mid);
         double[] leftArr = getLimit(leftBuff);
         double[] rightArr = getLimit(rightBuff);
-        double[] result = new double[2];
 
-        double leftMinVal = leftArr[0];
-        double rightMinVal = rightArr[0];
-        result[0] = Math.min(leftMinVal, rightMinVal);
+        double[] result = new double[2];
+        // 最小值
+        result[0] = Math.min(leftArr[0], rightArr[0]);
+        // 最大值
         if (leftArr.length == 2 && rightArr.length == 2){
-            double leftMaxVal = leftArr[1];
-            double rightMaxVal = rightArr[1];
-            result[1] = Math.max(leftMaxVal, rightMaxVal);
+            result[1] = Math.max(leftArr[1], rightArr[1]);
         }
         if (leftArr.length == 1 && rightArr.length == 1){
-            result[1] = Math.max(leftMinVal, rightMinVal);
+            result[1] = Math.max(leftArr[0], rightArr[0]);
         }
         if (leftArr.length == 1 && rightArr.length == 2){
-            double leftMinMax = Math.max(leftMinVal, rightMinVal);
-            double rightMaxVal = rightArr[1];
-            result[1] = Math.max(leftMinMax,rightMaxVal);
+            result[1] = Math.max(leftArr[0],rightArr[1]);
         }
         if (leftArr.length == 2 && rightArr.length == 1){
-            result[1] = leftArr[1];
+            result[1] = Math.max(leftArr[1], rightArr[0]);
         }
         return result;
     }
