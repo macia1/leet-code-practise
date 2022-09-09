@@ -12,7 +12,7 @@ public class Limit {
     public static void main(String[] args) {
         double[] doubleArr = new double[100000];
         for (int i = 0; i < doubleArr.length; i++) {
-            doubleArr[i] = ThreadLocalRandom.current().nextDouble(-99999,99999L);
+            doubleArr[i] = ThreadLocalRandom.current().nextDouble(-999999999999L,999999999999L);
         }
         System.out.println(Arrays.toString(doubleArr));
         System.out.println("数组长度:" + doubleArr.length);
@@ -48,7 +48,6 @@ public class Limit {
         double leftMinVal = leftArr[0];
         double rightMinVal = rightArr[0];
         result[0] = Math.min(leftMinVal, rightMinVal);
-        double leftMinMax = Math.max(leftMinVal, rightMinVal);
         if (leftArr.length == 2 && rightArr.length == 2){
             double leftMaxVal = leftArr[1];
             double rightMaxVal = rightArr[1];
@@ -58,6 +57,7 @@ public class Limit {
             result[1] = Math.max(leftMinVal, rightMinVal);
         }
         if (leftArr.length == 1 && rightArr.length == 2){
+            double leftMinMax = Math.max(leftMinVal, rightMinVal);
             double rightMaxVal = rightArr[1];
             result[1] = Math.max(leftMinMax,rightMaxVal);
         }
