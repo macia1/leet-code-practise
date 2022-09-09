@@ -1,6 +1,7 @@
 package macia.divideAndConquer;
 
 import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author zenggs
@@ -9,8 +10,13 @@ import java.util.Arrays;
 public class Limit {
 
     public static void main(String[] args) {
-        double[] data = {-1233123.123, -999999999999L, 12312312312312L, 123121, -123123, 123123.1, 9999999999L};
-        double[] limit = new Limit().getLimit(data);
+        double[] doubleArr = new double[100000];
+        for (int i = 0; i < doubleArr.length; i++) {
+            doubleArr[i] = ThreadLocalRandom.current().nextDouble(999999999999999999L);
+        }
+        System.out.println(Arrays.toString(doubleArr));
+//        double[] data = {-1233123.123, -999999999999L, 12312312312312L, 123121, -123123, 123123.1, 9999999999L};
+        double[] limit = new Limit().getLimit(doubleArr);
         System.out.println(Arrays.toString(limit));
     }
 
@@ -48,7 +54,13 @@ public class Limit {
 
         }
         if (leftArr.length == 1 && rightArr.length == 1){
-            return data;
+            if (leftArr[0] < rightArr[0]){
+                result[0] = leftArr[0];
+                result[1] = rightArr[0];
+            }else {
+                result[0] = rightArr[0];
+                result[1] = leftArr[0];
+            }
         }
         if (leftArr.length == 1 && rightArr.length == 2){
             double leftMinVal = leftArr[0];
