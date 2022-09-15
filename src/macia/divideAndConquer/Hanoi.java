@@ -15,11 +15,14 @@ public class Hanoi {
 
     private void hanoi(int n,String source,String target,String temp){
         if (n == 1){
+            // 只有一层 源数据区 -> 目标区
             System.out.printf("%s - > %s\n", source, target);
         }else {
+            // 1. 数据源区 -> 缓冲区
             hanoi(n-1, source, temp, target);
-            // 打印移动轨迹
+            // 2. 数据源区 -> 目标区
             hanoi(1, source, target, temp);
+            // 3. 缓冲区 -> 目标区
             hanoi(n-1, temp, target, source);
         }
     }
