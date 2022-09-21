@@ -1,7 +1,5 @@
 package macia.leetcode;
 
-import java.util.Arrays;
-
 /**
  * @author ebiz_zenggs
  * @Date 2022/8/16
@@ -58,7 +56,7 @@ public class L4 {
         // 1. 数组合并
         int[] counts = numMerge(nums1, nums2);
         // 2. 数据排序
-        int[] orderlyNums = sort(counts);
+        int[] orderlyNums = selectSort(counts);
         // 3. 取中位数
         return getMiddleNum(orderlyNums);
     }
@@ -80,7 +78,7 @@ public class L4 {
         }
     }
 
-    private int[] sort(int[] counts) {
+    private int[] insertSort(int[] counts) {
         for (int i = 0; i < counts.length; i++) {
             int iV = counts[i];
             for (int j = i+1; j < counts.length; j++) {
@@ -90,6 +88,17 @@ public class L4 {
                     counts[j] = iV;
                     iV = jV;
                 }
+            }
+        }
+        return counts;
+    }
+
+    private int[] selectSort(int[] counts){
+        for (int i = 1; i < counts.length; i++) {
+            for (int j = i; j > 0 && counts[j] < counts[j-1]; j--) {
+                int pVal = counts[j];
+                counts[j] = counts[j-1];
+                counts[j-1] = pVal;
             }
         }
         return counts;
